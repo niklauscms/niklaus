@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: node
 
-    working_directory: ~/repo/api
+    working_directory: ~/project/api
 
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
     docker:
       - image: node
 
-    working_directory: ~/repo/admin-ui
+    working_directory: ~/project/admin-ui
 
     steps:
       - checkout
