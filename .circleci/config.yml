@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          apk add -U git ssh
+          apk add -U git openssh-client
           cd admin-ui
           yarn install
           yarn lint
