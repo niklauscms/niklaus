@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  test-api:
+    docker:
+      - image: node:8-alpine
+    steps:
+      - checkout
+      - run: |
+          cd api
+          yarn install
+          yarn lint
+  test-admin-ui:
+    docker:
+      - image: node:8-alpine
+    steps:
+      - checkout
+      - run: |
+          apk add -U git
+          cd admin-ui
+          yarn install
+          yarn lint
+workflows:
+  version: 2
+  test_all:
+    jobs:
+      - test-api
+      - test-admin-ui
