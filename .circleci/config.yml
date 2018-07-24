@@ -22,3 +22,8 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn test
+workflows:
+  version: 2
+  test_all:
+     - test-api
+     - test-admin-ui
