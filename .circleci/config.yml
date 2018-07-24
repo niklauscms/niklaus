@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  test-api:
+    docker:
+      - image: node
+
+    working_directory: ~/repo/api
+
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
+  test-admin-ui:
+    docker:
+      - image: node
+
+    working_directory: ~/repo/admin-ui
+
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
+  test-blog-example-ui
+    docker:
+      - image: node
+
+    working_directory: ~/repo/blog-example-ui
+
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
