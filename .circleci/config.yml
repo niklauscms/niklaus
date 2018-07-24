@@ -9,7 +9,6 @@ jobs:
           cd api
           yarn install
           yarn lint
-          yarn test
   test-admin-ui:
     docker:
       - image: node:8-slim
@@ -19,7 +18,6 @@ jobs:
           cd admin-ui
           yarn install
           yarn lint
-          yarn test
 workflows:
   version: 2
   test_all:
