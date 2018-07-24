@@ -2,7 +2,7 @@ version: 2
 jobs:
   test-api:
     docker:
-      - image: node:8-slim
+      - image: node:8-alpine
     steps:
       - checkout
       - run: |
@@ -11,7 +11,7 @@ jobs:
           yarn lint
   test-admin-ui:
     docker:
-      - image: node:8-slim
+      - image: node:8-alpine
     steps:
       - checkout
       - run: |
