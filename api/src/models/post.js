@@ -1,5 +1,5 @@
 module.exports.register = function (db, datatypes) {
-  db.define('post', {
+  db.Post = db.define('post', {
     id: {
       type: datatypes.INTEGER,
       autoIncrement: true,
@@ -12,5 +12,7 @@ module.exports.register = function (db, datatypes) {
     content: {
       type: datatypes.BLOB,
     },
+  }, {
+    tableName: 'post',
   });
 };
