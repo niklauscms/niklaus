@@ -2,25 +2,21 @@ version: 2
 jobs:
   test-api:
     docker:
-      - image: node
-
-    working_directory: ~/project/api
-
+      - image: node:8-slim
     steps:
       - checkout
       - run: |
+          cd api
           yarn install
           yarn lint
           yarn test
   test-admin-ui:
     docker:
-      - image: node
-
-    working_directory: ~/project/admin-ui
-
+      - image: node:8-slim
     steps:
       - checkout
       - run: |
+          cd admin-ui
           yarn install
           yarn lint
           yarn test
