@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          apk add -U git
           cd admin-ui
           yarn install
           yarn lint
