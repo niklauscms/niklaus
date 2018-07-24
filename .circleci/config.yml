@@ -25,6 +25,6 @@ jobs:
 workflows:
   version: 2
   test_all:
-     - test-api
-     - test-admin-ui
-
+    jobs:
+      - test-api
+      - test-admin-ui
