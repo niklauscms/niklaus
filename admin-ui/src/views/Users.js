@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 import Table, { IconColumn } from 'react-css-grid-table';
 
 export default function () {
-  const headers = [
+  const columns = [
     {
       value: 'check',
       width: '0.3fr',
+      format: check => <IconColumn icon="icon ion-md-checkmark" data={check} />,
+      className: 'justify-content-center',
     },
     {
       label: 'User',
       value: 'user',
       width: '2fr',
+      format: user => <Link to="/users:id">{user}</Link>,
+      className: 'Table__user',
     },
     {
       label: '# Published',
@@ -33,6 +37,13 @@ export default function () {
       label: 'Actions',
       value: 'actions',
       width: '0.7fr',
+      format: multipleData => multipleData.map(
+        actions => (
+          <span className="Table__action pr-2">
+            {actions}
+          </span>
+        ),
+      ),
     },
   ];
 
@@ -55,35 +66,14 @@ export default function () {
     },
   ];
 
-  const customColumns = {
-    check: {
-      format: check => <IconColumn icon="icon ion-md-checkmark" data={check} />,
-      className: 'justify-content-center',
-    },
-    user: {
-      format: user => <Link to="/users:id" data={user} />,
-      className: 'Table__user',
-    },
-    actions: {
-      format: multipleData => multipleData.map(
-        actions => (
-          <span className="Table__action pr-2">
-            {actions}
-          </span>
-        ),
-      ),
-    },
-  };
-
   return (
     <div className="Users">
       <h1>
-Users
+        Users
       </h1>
       <Table
-        headers={headers}
+        columns={columns}
         data={data}
-        customColumns={customColumns}
       />
     </div>
   );

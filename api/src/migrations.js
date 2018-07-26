@@ -4,30 +4,28 @@ const Umzug = require('umzug');
 
 module.exports.addColumnMigration = function (table, column, description) {
   return {
-    up: (queryInterface) =>
-      queryInterface.addColumn(table, column, description),
-    down: (queryInterface) =>
-      queryInterface.removeColumn(table, column),
+    up: queryInterface => queryInterface.addColumn(table, column, description),
+    down: queryInterface => queryInterface.removeColumn(table, column),
   };
 };
 
-function getMigrator(sequelize, path) {
+function getMigrator(sequelize, migrationsPath) {
   return new Umzug({
     storage: 'sequelize',
     storageOptions: {
       sequelize,
     },
     migrations: {
-      params: [sequelize.getQueryInterface(), sequelize.constructor, function() {
+      params: [sequelize.getQueryInterface(), sequelize.constructor, function () {
         throw new Error('Migration tried to use old style "done" callback. Please upgrade to "umzug" and return a promise instead.');
       }],
-      path,
+      migrationsPath,
       pattern: /\.js$/,
     },
   });
 }
 
-const migrator = (sequelize) => getMigrator(sequelize, path.join(__dirname, '..', 'migrations'));
+const migrator = sequelize => getMigrator(sequelize, path.join(__dirname, '..', 'migrations'));
 
 module.exports.migrateUp = function (sequelize) {
   return migrator(sequelize).up();
@@ -37,7 +35,7 @@ module.exports.migrateDown = function (sequelize) {
   return migrator(sequelize).down();
 };
 
-const seeder = (sequelize) => getMigrator(sequelize, path.join(__dirname, '..', 'migrations', 'seeders'), undefined);
+const seeder = sequelize => getMigrator(sequelize, path.join(__dirname, '..', 'migrations', 'seeders'), undefined);
 
 module.exports.seedUp = function (sequelize) {
   return seeder(sequelize).up();
