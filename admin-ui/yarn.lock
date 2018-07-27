@@ -7,8 +7,8 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
 
 "@types/node@*":
-  version "10.5.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
+  version "10.5.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.3.tgz#5bcfaf088ad17894232012877669634c06b20cc5"
 
 abbrev@1:
   version "1.1.1"
@@ -5051,8 +5051,8 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     strip-json-comments "~2.0.1"
 
 "react-css-grid-table@https://github.com/rebeccapark/react-css-grid-table":
-  version "0.0.5"
-  resolved "https://github.com/rebeccapark/react-css-grid-table#7ee68dcbc4b11c9dacf5a8632e8d2900b7695a4e"
+  version "0.0.6"
+  resolved "https://github.com/rebeccapark/react-css-grid-table#3268fe6effd8717cfb7d6d3a5c72f9431e14df9f"
   dependencies:
     babel-core "^6.26.3"
     babel-plugin-external-helpers "^6.22.0"
