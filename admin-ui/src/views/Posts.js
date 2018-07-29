@@ -1,6 +1,6 @@
+import moment from 'moment';
 import React from 'react';
 import Table, { IconColumn } from 'react-css-grid-table';
-import moment from 'moment';
 
 async function request(endpoint) {
   const response = await fetch(`http://localhost:8000/${endpoint}`);
