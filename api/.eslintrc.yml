@@ -2,7 +2,10 @@ env:
   node: true
   es6: true
   commonjs: true
+  mocha: true
 extends: 'airbnb-base'
+plugins:
+  - mocha
 parserOptions:
   ecmaVersion: 2018
 rules:
@@ -19,3 +22,4 @@ rules:
     - error
     - always
   func-names: off
+  import/prefer-default-export: off
