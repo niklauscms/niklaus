@@ -1,5 +1,6 @@
 import React from 'react';
 import Table, { IconColumn } from 'react-css-grid-table';
+import moment from 'moment';
 
 async function request(endpoint) {
   const response = await fetch(`http://localhost:8000/${endpoint}`);
@@ -29,17 +30,7 @@ export default class extends React.Component {
       { label: 'Title', value: 'title', width: '2fr' },
       { label: 'Published Date', value: 'publishedDate', width: '1fr' },
       { label: 'Published By', value: 'publishedBy', width: '1fr' },
-      { label: 'Last Modified', value: 'updatedAt', width: '1fr' },
-      {
-        value: 'comments',
-        width: '0.5fr',
-        format: data => <IconColumn icon="icon ion-ios-chatbubbles-outline" data={data} />,
-      },
-      {
-        value: 'hearts',
-        width: '0.5fr',
-        format: data => <IconColumn icon="icon ion-ios-heart-outline" data={data} />,
-      },
+      { label: 'Last Modified', value: 'updatedAt', width: '1fr', format: (updatedAt) => moment(updatedAt).format("MMMM Do YYYY, h:mm:ss")},
     ];
 
     const { posts: data } = this.state;
