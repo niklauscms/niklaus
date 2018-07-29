@@ -30,7 +30,9 @@ export default class extends React.Component {
       { label: 'Title', value: 'title', width: '2fr' },
       { label: 'Published Date', value: 'publishedDate', width: '1fr' },
       { label: 'Published By', value: 'publishedBy', width: '1fr' },
-      { label: 'Last Modified', value: 'updatedAt', width: '1fr', format: (updatedAt) => moment(updatedAt).format("MMMM Do YYYY, h:mm:ss")},
+      {
+        label: 'Last Modified', value: 'updatedAt', width: '1fr', format: updatedAt => moment(updatedAt).format('MMMM Do YYYY, h:mm:ss'),
+      },
     ];
 
     const { posts: data } = this.state;
