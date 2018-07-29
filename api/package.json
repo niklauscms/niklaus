@@ -11,6 +11,8 @@
     "umzug": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^5.2.0"
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
   }
 }

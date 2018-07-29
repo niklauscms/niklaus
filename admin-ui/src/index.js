@@ -22,25 +22,27 @@ const store = createStore(
     ...reducers,
     router: routerReducer,
   }),
-  applyMiddleware(middleware));
+  applyMiddleware(middleware),
+);
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-	<Header />
-	<div className="container">
-	  <div className="row">
-	    <div className="col Main">
+        <Header />
+        <div className="container">
+          <div className="row">
+            <div className="col Main">
               <Route exact path="/" component={Dashboard} />
-	      <Route path="/posts" component={Posts} />
-	      <Route path="/users" component={Users} />
-	      <Route path="/users/@:id" component={User} />
+              <Route path="/posts" component={Posts} />
+              <Route path="/users" component={Users} />
+              <Route path="/users/@:id" component={User} />
               <Route path="/settings" component={Settings} />
-	    </div>
-	  </div>
-	</div>
+            </div>
+          </div>
+        </div>
       </div>
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root'),
+);

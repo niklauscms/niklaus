@@ -1,23 +1,27 @@
 import React from 'react';
 import Table, { IconColumn } from 'react-css-grid-table';
 
-export default function(props) {
-  const headers = [
+export default function () {
+  const columns = [
     {
-      'value': 'check',
-      'width': '0.3fr',
+      value: 'check',
+      width: '0.3fr',
+      format: data => <IconColumn icon="icon ion-md-checkmark" data={data} />,
+      className: 'justify-content-center',
     },
-    { 'label': 'Title', 'value': 'title', 'width': '2fr' },
-    { 'label': 'Published Date', 'value': 'publishedDate', 'width': '1fr' },
-    { 'label': 'Published By', 'value': 'publishedBy', 'width': '1fr' },
-    { 'label': 'Last Modified', 'value': 'lastModified', 'width': '1fr' },
+    { label: 'Title', value: 'title', width: '2fr' },
+    { label: 'Published Date', value: 'publishedDate', width: '1fr' },
+    { label: 'Published By', value: 'publishedBy', width: '1fr' },
+    { label: 'Last Modified', value: 'lastModified', width: '1fr' },
     {
-      'value': 'comments',
-      'width': '0.5fr',
+      value: 'comments',
+      width: '0.5fr',
+      body: data => <IconColumn icon="icon ion-ios-chatbubbles-outline" data={data} />,
     },
     {
-      'value': 'hearts',
-      'width': '0.5fr',
+      value: 'hearts',
+      width: '0.5fr',
+      body: data => <IconColumn icon="icon ion-ios-heart-outline" data={data} />,
     },
   ];
 
@@ -29,7 +33,7 @@ export default function(props) {
       publishedBy: 'Rebecca Park',
       lastModified: '22 seconds ago',
       comments: 22,
-      hearts: 10
+      hearts: 10,
     },
     {
       id: 2,
@@ -38,31 +42,19 @@ export default function(props) {
       publishedBy: 'Mumu Eaton',
       lastModified: '1 day ago',
       comments: 13,
-      hearts: 11
+      hearts: 11,
     },
   ];
 
-  const customColumns = {
-    check: {
-      format: (data) => <IconColumn icon="icon ion-md-checkmark" data={data} />,
-      className: 'justify-content-center'
-    },
-    comments: {
-      body: (data) => <IconColumn icon="icon ion-ios-chatbubbles-outline" data={data} />
-    },
-    ghearts: {
-      body: (data) => <IconColumn icon="icon ion-ios-heart-outline"  data={data} />
-    }
-  };
-  
   return (
     <div className="Posts">
-      <h1>Posts</h1>
+      <h1>
+Posts
+      </h1>
       <Table
-	headers={headers}
-	data={data}
-	customColumns={customColumns}
+        columns={columns}
+        data={data}
       />
     </div>
-  )
+  );
 }
