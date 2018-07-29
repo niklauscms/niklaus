@@ -23,7 +23,7 @@ async function main() {
   app.listen(8000, () => console.log('Listening on port 3000'));
 }
 
-main().catch(e => {
+main().catch((e) => {
   // eslint-disable-next-line no-console
   console.error(e);
   process.exit(1);

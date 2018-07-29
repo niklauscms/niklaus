@@ -8,7 +8,7 @@ export default function () {
     <header className="Header">
       <div className="container">
         <div className="row align-center">
-          <Link className="Header__link col col-auto" activeStyle={{color: 'red'}} to="/">
+          <Link className="Header__link col col-auto" activeStyle={{ color: 'red' }} to="/">
 Dashboard
           </Link>
           <Link className="Header__link col col-auto" to="/posts">
