@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          apk add -U sqlite3
+          apk add -U sqlite
           cd api
           yarn install
           yarn lint
