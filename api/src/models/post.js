@@ -16,4 +16,11 @@ module.exports.register = function (db, datatypes) {
   }, {
     tableName: 'post',
   });
+
+  // eslint-disable-next-line no-param-reassign
+  db.Post.export = ({ dataValues: p }) => ({
+    ...p,
+    title: p.title.toString(),
+    content: p.content.toString(),
+  });
 };

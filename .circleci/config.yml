@@ -6,9 +6,11 @@ jobs:
     steps:
       - checkout
       - run: |
+          apk add -U sqlite3
           cd api
           yarn install
           yarn lint
+          yarn test
   test-admin-ui:
     docker:
       - image: node:8-alpine

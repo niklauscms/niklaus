@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 const Sequelize = require('sequelize');
 
@@ -5,26 +7,48 @@ const migrations = require('./migrations');
 const models = require('./models');
 const services = require('./services');
 
-function initializeDatabase() {
-  return new Sequelize('sqlite:nikolaus.db');
+function initializeDatabase(connectionString) {
+  return new Sequelize(connectionString);
 }
 
-async function main() {
+function initializeApp(config) {
   const app = express();
-  app.db = initializeDatabase();
+  app.db = initializeDatabase(config.db);
 
-  await migrations.migrateUp(app.db);
-  await migrations.seedUp(app.db);
+  app.use(bodyParser.json());
+  app.use(cors());
 
   models.register(app);
   services.register(app);
 
-  // eslint-disable-next-line no-console
-  app.listen(8000, () => console.log('Listening on port 3000'));
+  return app;
 }
 
-main().catch((e) => {
-  // eslint-disable-next-line no-console
-  console.error(e);
-  process.exit(1);
-});
+module.exports.main = async function (config) {
+  const app = initializeApp(config);
+
+  console.log('running');
+  await migrations.migrateUp(app.db);
+  await migrations.seedUp(app.db);
+
+  return new Promise((done) => {
+    app.listen(config.port, () => {
+      // eslint-disable-next-line no-console
+      console.log(`Listening on port ${config.port}`);
+      done(app);
+    });
+  });
+}
+
+if (process.env.NODE_ENV !== 'test') {
+  const config = {
+    db: 'sqlite:nikolaus.db',
+    port: 8000,
+  };
+
+  module.exports.main(config).catch((e) => {
+    // eslint-disable-next-line no-console
+    console.error(e);
+    process.exit(1);
+  });
+}
