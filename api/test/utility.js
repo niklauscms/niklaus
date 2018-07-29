@@ -17,4 +17,4 @@ module.exports.request = async function (endpoint, config = {}) {
   });
 
   return response.json();
-}
+};

@@ -27,7 +27,6 @@ function initializeApp(config) {
 module.exports.main = async function (config) {
   const app = initializeApp(config);
 
-  console.log('running');
   await migrations.migrateUp(app.db);
   await migrations.seedUp(app.db);
 
@@ -38,7 +37,7 @@ module.exports.main = async function (config) {
       done(app);
     });
   });
-}
+};
 
 if (process.env.NODE_ENV !== 'test') {
   const config = {
