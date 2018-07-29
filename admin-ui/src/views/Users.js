@@ -15,7 +15,11 @@ export default function () {
       label: 'User',
       value: 'user',
       width: '2fr',
-      format: user => <Link to="/users:id">{user}</Link>,
+      format: user => (
+        <Link to="/users:id">
+          {user}
+        </Link>
+      ),
       className: 'Table__user',
     },
     {
