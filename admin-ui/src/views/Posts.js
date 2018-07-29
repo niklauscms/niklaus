@@ -29,7 +29,7 @@ export default class extends React.Component {
       { label: 'Title', value: 'title', width: '2fr' },
       { label: 'Published Date', value: 'publishedDate', width: '1fr' },
       { label: 'Published By', value: 'publishedBy', width: '1fr' },
-      { label: 'Last Modified', value: 'lastModified', width: '1fr' },
+      { label: 'Last Modified', value: 'updatedAt', width: '1fr' },
       {
         value: 'comments',
         width: '0.5fr',
