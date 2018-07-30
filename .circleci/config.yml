@@ -6,18 +6,17 @@ jobs:
     steps:
       - checkout
       - run: |
-          apk add -U sqlite
           cd api
           yarn install
           yarn lint
           yarn test
   test-admin-ui:
     docker:
-      - image: node:8-alpine
+      - image: node:8-slim
     steps:
       - checkout
       - run: |
-          apk add -U git
+          apt-get update -y && apt-get install -y git
           cd admin-ui
           yarn install
           yarn lint
