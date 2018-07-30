@@ -1,4 +1,4 @@
-const requireSession = require('./utility');
+const { requireSession } = require('./utility');
 
 module.exports.register = function (app) {
   app.get('/posts', async (req, res) => {

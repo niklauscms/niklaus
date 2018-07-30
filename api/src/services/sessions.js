@@ -1,11 +1,30 @@
 const bcrypt = require('bcrypt');
+const uuidv4 = require('uuid/v4');
 
 const SESSION_AGE = 1000 * 60 * 120; // 2 Hours
 
 module.exports.register = function (app) {
+  app.delete('/session', async (req, res) => {
+    const { sessionId } = req.cookies;
+
+    if (!sessionId) {
+      res.json({});
+      return;
+    }
+
+    try {
+      await app.db.Session.update(
+        { expires: 0 },
+        { where: { id: sessionId } },
+      );
+    } catch (e) { /* do nothing */ }
+
+    res.json({});
+  });
+
   app.post('/session', async (req, res) => {
     function unauthorized() {
-      req.status(401).json({ error: 'Invalid username or password' });
+      res.status(401).json({ error: 'Invalid username or password' });
     }
 
     const { password, username } = req.body;
@@ -15,7 +34,7 @@ module.exports.register = function (app) {
       return;
     }
 
-    const users = await app.db.User.find({ username });
+    const users = await app.db.User.findAll({ where: { username } });
 
     if (!users.length) {
       unauthorized();
@@ -30,12 +49,13 @@ module.exports.register = function (app) {
     }
 
     const { id } = await app.db.Session.create({
+      id: uuidv4(),
       userId: user.id,
       expiresIn: SESSION_AGE,
     });
 
     const options = { maxAge: SESSION_AGE, httpOnly: true };
 
-    res.cookie('sessionId', id, options).sendStatus(200);
+    res.cookie('sessionId', id, options).json({});
   });
 };

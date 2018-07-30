@@ -1,6 +1,6 @@
 module.exports.requireSession = (app, callback) => async (req, res) => {
   function unauthorized() {
-    res.status(403).send({ error: 'Unauthorized request' });
+    res.status(403).json({ error: 'Unauthorized request' });
   }
 
   const { sessionId } = req.cookies || {};
@@ -10,7 +10,7 @@ module.exports.requireSession = (app, callback) => async (req, res) => {
   }
 
   const sessions = await app.db.Session.findAll({
-    id: sessionId,
+    where: { id: sessionId },
   });
 
   if (!sessions.length) {

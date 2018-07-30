@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      email: {
+      username: {
         type: datatypes.STRING,
         allowNull: false,
       },
@@ -27,6 +27,31 @@ module.exports = {
         type: datatypes.DATE,
         defaultValue: datatypes.NOW,
         allowNull: false,
+      },
+    });
+
+    await queryInterface.createTable('nc_sessions', {
+      id: {
+        type: datatypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+      },
+      createdAt: {
+        type: datatypes.DATE,
+        defaultValue: datatypes.NOW,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: datatypes.DATE,
+        defaultValue: datatypes.NOW,
+        allowNull: false,
+      },
+      userId: {
+        type: datatypes.INTEGER,
+        references: {
+          model: 'nc_users',
+          key: 'id',
+        },
       },
     });
 

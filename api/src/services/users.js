@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const requireSession = require('./utility');
+const { requireSession } = require('./utility');
 
 module.exports.register = function (app) {
   app.get('/users', requireSession(app, async (req, res) => {
@@ -17,7 +17,7 @@ module.exports.register = function (app) {
     }
   }));
 
-  app.post('/users', async (req, res) => {
+  app.post('/user', async (req, res) => {
     async function callback(req1, res1) {
       const { password, username, name } = req1.body;
       const hashedPassword = await bcrypt.hash(password, 10);

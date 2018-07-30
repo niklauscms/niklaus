@@ -2,22 +2,10 @@ const { makeExporter } = require('./utility');
 
 module.exports.register = function (db, datatypes) {
   // eslint-disable-next-line no-param-reassign
-  db.User = db.define('nc_user', {
+  db.Session = db.define('nc_session', {
     id: {
-      type: datatypes.INTEGER,
-      autoIncrement: true,
+      type: datatypes.UUID,
       primaryKey: true,
-      allowNull: false,
-    },
-    username: {
-      type: datatypes.STRING,
-      allowNull: false,
-    },
-    name: {
-      type: datatypes.STRING,
-    },
-    password: {
-      type: datatypes.STRING,
       allowNull: false,
     },
     createdAt: {
@@ -30,11 +18,15 @@ module.exports.register = function (db, datatypes) {
       defaultValue: datatypes.NOW,
       allowNull: false,
     },
+    userId: {
+      type: datatypes.INTEGER,
+      references: {
+        model: 'nc_users',
+        key: 'id',
+      },
+    },
   });
 
   // eslint-disable-next-line no-param-reassign
-  db.User.export = u => ({
-    ...makeExporter()(u),
-    password: undefined,
-  });
+  db.Session.export = makeExporter();
 };
