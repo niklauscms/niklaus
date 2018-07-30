@@ -6,14 +6,14 @@ module.exports.register = function (app) {
     res.json(posts.map(app.db.Post.export));
   });
 
-  app.get('/post/:id', requireSession(app, async (req, res) => {
+  app.get('/post/:id', async (req, res) => {
     try {
       const post = await app.db.Post.findById(req.params.id);
       res.json(app.db.Post.export(post));
     } catch (e) {
       res.status(404).json({ error: 'Not found' });
     }
-  }));
+  });
 
   app.post('/post', requireSession(app, async (req, res) => {
     const post = await app.db.Post.create({

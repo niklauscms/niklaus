@@ -2,21 +2,22 @@ version: 2
 jobs:
   test-api:
     docker:
-      - image: node:8-slim
+      - image: node:8-alpine
     steps:
       - checkout
       - run: |
+          apk add -U python sqlite alpine-sdk
           cd api
           yarn install
           yarn lint
           yarn test
   test-admin-ui:
     docker:
-      - image: node:8-slim
+      - image: node:8-alpine
     steps:
       - checkout
       - run: |
-          apt-get update -y && apt-get install -y git
+          apk add -U git
           cd admin-ui
           yarn install
           yarn lint
