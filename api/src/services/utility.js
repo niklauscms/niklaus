@@ -3,7 +3,7 @@ module.exports.requireSession = (app, callback) => async (req, res) => {
     res.status(403).send({ error: 'Unauthorized request' });
   }
 
-  const { sessionId: { value: sessionId, expires } } = req.cookies || {};
+  const { sessionId } = req.cookies || {};
   if (!sessionId) {
     unauthorized();
     return;

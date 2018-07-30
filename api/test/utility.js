@@ -21,6 +21,7 @@ module.exports.request = async function (endpoint, config = {}) {
   try {
     return JSON.parse(text);
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error(text);
     return text;
   }

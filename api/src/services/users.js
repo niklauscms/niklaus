@@ -8,7 +8,7 @@ module.exports.register = function (app) {
     res.json(users.map(app.db.User.export));
   }));
 
-  app.get('/user/:id', requireSession(app,  (req, res) => {
+  app.get('/user/:id', requireSession(app, async (req, res) => {
     try {
       const user = await app.db.User.findById(req.params.id);
       res.json(app.db.User.export(user));
@@ -18,8 +18,8 @@ module.exports.register = function (app) {
   }));
 
   app.post('/users', async (req, res) => {
-    function callback(req, res) {
-      const { password, username, name } = req.body;
+    async function callback(req1, res1) {
+      const { password, username, name } = req1.body;
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const user = await app.db.User.create({
@@ -28,15 +28,15 @@ module.exports.register = function (app) {
         password: hashedPassword,
       });
 
-      res.json(app.db.User.export(user));
+      res1.json(app.db.User.export(user));
     }
 
     const users = await app.db.User.findAll();
     if (users.length) {
-      requireSession(app, callback);
+      await requireSession(app, callback)(req, res);
       return;
     }
 
-    callback(req, res);
+    await callback(req, res);
   });
 };
