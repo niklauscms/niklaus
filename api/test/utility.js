@@ -16,5 +16,12 @@ module.exports.request = async function (endpoint, config = {}) {
     body,
   });
 
-  return response.json();
+  const text = await response.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    console.error(text);
+    return text;
+  }
 };

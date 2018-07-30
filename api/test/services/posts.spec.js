@@ -8,28 +8,28 @@ const testPost = {
 };
 
 describe('services/posts', () => {
-  it('handles POST /posts', async () => {
-    const response = await request('/posts', {
+  it('handles POST /post', async () => {
+    const response = await request('/post', {
       method: 'POST',
       body: testPost,
     });
 
-    assert.deepEqual(response.title, testPost.title, 'title is correct');
-    assert.deepEqual(response.content, testPost.content, 'content is correct');
+    assert.equal(response.title, testPost.title, 'title is correct');
+    assert.equal(response.content, testPost.content, 'content is correct');
   });
 
   it('handles GET /post/<id>', async () => {
     const response = await request('/post/1');
 
-    assert.deepEqual(response.title, testPost.title, 'title is correct');
-    assert.deepEqual(response.content, testPost.content, 'content is correct');
+    assert.equal(response.title, testPost.title, 'title is correct');
+    assert.equal(response.content, testPost.content, 'content is correct');
   });
 
   it('handles GET /posts', async () => {
     const response = await request('/posts');
 
-    assert.deepEqual(response.length, 1, 'one post returned');
-    assert.deepEqual(response[0].title, testPost.title, 'title is correct');
-    assert.deepEqual(response[0].content, testPost.content, 'content is correct');
+    assert.equal(response.length, 1, 'one post returned');
+    assert.equal(response[0].title, testPost.title, 'title is correct');
+    assert.equal(response[0].content, testPost.content, 'content is correct');
   });
 });
