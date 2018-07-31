@@ -27,30 +27,54 @@ const store = createStore(
   applyMiddleware(middleware),
 );
 
-const App = connect(({ session }) => { session })((props) => {
-  return (
-    <React.Fragment>
-      {props.session && <Header />}
-      <div className="container">
-        <div className="row">
-          <div className="col Main">
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/create-post" component={Login} />
-            <Route path="/posts" component={Posts} />
-            <Route path="/users" component={Users} />
-            <Route path="/users/@:id" component={User} />
-            <Route path="/settings" component={Settings} />
+class App extends React.Component {
+  componentDidMount() {
+    if (!this.props.session) {
+      
+    }
+  }
+
+  render() {
+    const { session } = this.props;
+
+    if (!session) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col Main">
+              <Login />
+            </div>
           </div>
         </div>
-      </div>
-    </React.Fragment>
-  );
-});
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <Header />
+        <div className="container">
+          <div className="row">
+            <div className="col Main">
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/create-post" component={CreatePost} />
+              <Route path="/posts" component={Posts} />
+              <Route path="/users" component={Users} />
+              <Route path="/users/@:id" component={User} />
+              <Route path="/settings" component={Settings} />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+const ConnectedApp = connect(({ session }) => ({ session }))(App);
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <ConnectedApp />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
