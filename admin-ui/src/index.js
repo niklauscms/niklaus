@@ -1,10 +1,11 @@
 import createHistory from 'history/createBrowserHistory';
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect, Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Route } from 'react-router';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import CreatePost from './views/CreatePost';
 import Header from './components/Header';
@@ -27,47 +28,45 @@ const store = createStore(
   applyMiddleware(middleware),
 );
 
-class App extends React.Component {
-  componentDidMount() {
-    if (!this.props.session) {
-      
-    }
-  }
+function App(props) {
+  const { session } = props;
 
-  render() {
-    const { session } = this.props;
-
-    if (!session) {
-      return (
-        <div className="container">
-          <div className="row">
-            <div className="col Main">
-              <Login />
-            </div>
-          </div>
-        </div>
-      );
-    }
-
+  if (!session.loggedIn) {
     return (
-      <React.Fragment>
-        <Header />
-        <div className="container">
-          <div className="row">
-            <div className="col Main">
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/create-post" component={CreatePost} />
-              <Route path="/posts" component={Posts} />
-              <Route path="/users" component={Users} />
-              <Route path="/users/@:id" component={User} />
-              <Route path="/settings" component={Settings} />
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col Main">
+            <Login />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
+
+  return (
+    <React.Fragment>
+      <Header />
+      <div className="container">
+        <div className="row">
+          <div className="col Main">
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/create-post" component={CreatePost} />
+            <Route path="/posts" component={Posts} />
+            <Route path="/users" component={Users} />
+            <Route path="/users/@:id" component={User} />
+            <Route path="/settings" component={Settings} />
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
+
+App.propTypes = {
+  session: PropTypes.shape({
+    loggedIn: PropTypes.bool,
+  }).isRequired,
+};
 
 const ConnectedApp = connect(({ session }) => ({ session }))(App);
 

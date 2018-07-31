@@ -13,6 +13,7 @@
     "moment": "^2.22.2",
     "node-sass-package-importer": "^5.2.0",
     "parcel-bundler": "^1.9.7",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-css-grid-table": "https://github.com/rebeccapark/react-css-grid-table",
     "react-dom": "^16.4.1",
