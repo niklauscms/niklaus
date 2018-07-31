@@ -1,9 +1,9 @@
 @import './constants.scss';
 
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../../node_modules/ionicons/dist/scss/ionicons.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~ionicons/dist/scss/ionicons.scss';
 
-// @import '../../node_modules/react-css-grid-table/react-css-grid-table.css';
+@import '~react-css-grid-table/react-css-grid-table.css';
 
 html, body {
     font-family: $font;

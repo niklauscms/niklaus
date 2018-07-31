@@ -11,6 +11,7 @@
     "history": "^4.7.2",
     "ionicons": "^3.0.0",
     "moment": "^2.22.2",
+    "node-sass-package-importer": "^5.2.0",
     "parcel-bundler": "^1.9.7",
     "react": "^16.4.1",
     "react-css-grid-table": "https://github.com/rebeccapark/react-css-grid-table",
@@ -22,7 +23,9 @@
     "redux": "^4.0.0"
   },
   "scripts": {
-    "start": "parcel -p 3000 ./index.html"
+    "start": "parcel -p 3000 ./index.html",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "eslintConfig": {
     "extends": "airbnb",
