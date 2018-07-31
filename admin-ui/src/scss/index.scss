@@ -10,6 +10,16 @@ html, body {
     width: 100%;
     height: 100%;
     color: $font-color-medium;
+    background-color: #f7f7f7;
+}
+
+#root {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    background: #f9f9f9; 
 }
 
 .align-center {
@@ -71,32 +81,4 @@ a:hover, a:focus {
         }
         
     }
-}
-
-.Signin {
-    border: 1px solid $gray-border;
-    border-top: 3px solid $green-primary;
-    padding: 50px;
-    width: fit-content;
-    display: flex;
-    flex-flow: column;
-    margin: auto auto;
-
-    label {
-        margin-top: 20px;
-    }
-
-    input {
-        width: 300px;
-    }
-}
-
-.Signin__submit {
-    width: fit-content;
-    margin-top: 30px;
-    background-color: $green-primary;
-    border: 1px solid $green-primary;
-    padding: 5px 7px;
-    color: $white;
-    border-radius: 3px;
 }

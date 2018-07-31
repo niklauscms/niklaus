@@ -1,0 +1,12 @@
+@import '../scss/constants.scss';
+
+.Card {
+    border: 1px solid $gray-border;
+    border-top: 3px solid $green-primary !important;
+    padding: 25px;
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+    background: $white;
+}
