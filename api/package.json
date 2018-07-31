@@ -6,12 +6,15 @@
     "test": "NODE_ENV=test mocha --full-trace --file test/setup.js --exit test/**/*.spec.js"
   },
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "sequelize": "^4.38.0",
     "sqlite3": "^4.0.2",
-    "umzug": "^2.1.0"
+    "umzug": "^2.1.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "^5.2.0",

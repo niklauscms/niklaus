@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const express = require('express');
 const Sequelize = require('sequelize');
@@ -6,6 +7,7 @@ const Sequelize = require('sequelize');
 const migrations = require('./migrations');
 const models = require('./models');
 const services = require('./services');
+const frontend = require('./frontend');
 
 function initializeDatabase(connectionString) {
   return new Sequelize(connectionString);
@@ -16,7 +18,14 @@ function initializeApp(config) {
   app.db = initializeDatabase(config.db);
 
   app.use(bodyParser.json());
-  app.use(cors());
+  app.use(cookieParser());
+
+  // React dev server is used in development, production build is on one server.
+  if (!config.isProduction) {
+    app.use(cors());
+  } else {
+    frontend.register(app);
+  }
 
   models.register(app);
   services.register(app);

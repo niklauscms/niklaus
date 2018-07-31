@@ -155,6 +155,13 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bcrypt@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/bcrypt/-/bcrypt-3.0.0.tgz#0cd38983f45143aa5a6122c9660d0b7ec3a33fb0"
+  dependencies:
+    nan "2.10.0"
+    node-pre-gyp "0.10.2"
+
 bluebird@^3.4.1, bluebird@^3.4.6, bluebird@^3.5.0:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
@@ -316,6 +323,13 @@ content-disposition@0.5.2:
 content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
+
+cookie-parser@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
+  dependencies:
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"
@@ -1228,7 +1242,7 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-nan@~2.10.0:
+nan@2.10.0, nan@~2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
 
@@ -1236,7 +1250,7 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-needle@^2.2.1:
+needle@^2.2.0, needle@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.1.tgz#b5e325bd3aae8c2678902fa296f729455d1d3a7d"
   dependencies:
@@ -1255,6 +1269,21 @@ nice-try@^1.0.4:
 node-fetch@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.0.tgz#4ee79bde909262f9775f731e3656d0db55ced5b5"
+
+node-pre-gyp@0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.10.2.tgz#e8945c20ef6795a20aac2b44f036eb13cf5146e3"
+  dependencies:
+    detect-libc "^1.0.2"
+    mkdirp "^0.5.1"
+    needle "^2.2.0"
+    nopt "^4.0.1"
+    npm-packlist "^1.1.6"
+    npmlog "^4.0.2"
+    rc "^1.2.7"
+    rimraf "^2.6.1"
+    semver "^5.3.0"
+    tar "^4"
 
 node-pre-gyp@^0.10.3:
   version "0.10.3"
@@ -1997,7 +2026,7 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
 
-uuid@^3.1.0, uuid@^3.2.1:
+uuid@^3.1.0, uuid@^3.2.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 

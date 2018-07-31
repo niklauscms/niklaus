@@ -1,3 +1,5 @@
+const { requireSession } = require('./utility');
+
 module.exports.register = function (app) {
   app.get('/posts', async (req, res) => {
     const posts = await app.db.Post.findAll();
@@ -9,17 +11,16 @@ module.exports.register = function (app) {
       const post = await app.db.Post.findById(req.params.id);
       res.json(app.db.Post.export(post));
     } catch (e) {
-      res.sendStatus(404);
+      res.status(404).json({ error: 'Not found' });
     }
   });
 
-  app.post('/posts', async (req, res) => {
+  app.post('/post', requireSession(app, async (req, res) => {
     const post = await app.db.Post.create({
-      id: 0,
       title: req.body.title,
       content: req.body.content,
     });
 
     res.json(post);
-  });
+  }));
 };
