@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-function sessionReducer(state, action) {
+function sessionReducer() {
   return { loggedIn: false };
 }
 

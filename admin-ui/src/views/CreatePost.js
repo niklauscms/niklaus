@@ -6,16 +6,24 @@ export default class extends React.Component {
   }
 
   render() {
-    return(
-      <div class="CreatePost">
-        <h1>Create Post</h1>
+    return (
+      <div className="CreatePost">
+        <h1>
+Create Post
+        </h1>
         <div className="CreatePost__container">
           <div className="CreatePost__field">
-            <label>Title</label>
+            <label>
+Title
+            </label>
             <input />
-            <label>Content</label>
-            <textarea rows='20' />
-            <label>Tags</label>
+            <label>
+Content
+            </label>
+            <textarea rows="20" />
+            <label>
+Tags
+            </label>
             <input />
           </div>
         </div>

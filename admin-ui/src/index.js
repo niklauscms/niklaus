@@ -1,10 +1,11 @@
 import createHistory from 'history/createBrowserHistory';
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect, Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Route } from 'react-router';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import CreatePost from './views/CreatePost';
 import Header from './components/Header';
@@ -27,15 +28,29 @@ const store = createStore(
   applyMiddleware(middleware),
 );
 
-const App = connect(({ session }) => { session })((props) => {
+function App(props) {
+  const { session } = props;
+
+  if (!session.loggedIn) {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col Main">
+            <Login />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
-      {props.session && <Header />}
+      <Header />
       <div className="container">
         <div className="row">
           <div className="col Main">
             <Route exact path="/" component={Dashboard} />
-            <Route path="/create-post" component={Login} />
+            <Route path="/create-post" component={CreatePost} />
             <Route path="/posts" component={Posts} />
             <Route path="/users" component={Users} />
             <Route path="/users/@:id" component={User} />
@@ -45,12 +60,20 @@ const App = connect(({ session }) => { session })((props) => {
       </div>
     </React.Fragment>
   );
-});
+}
+
+App.propTypes = {
+  session: PropTypes.shape({
+    loggedIn: PropTypes.bool,
+  }).isRequired,
+};
+
+const ConnectedApp = connect(({ session }) => ({ session }))(App);
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <ConnectedApp />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
