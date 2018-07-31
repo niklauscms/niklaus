@@ -46,3 +46,57 @@ a:hover, a:focus {
 .Table__user {
     color: $green-primary;
 }
+
+.CreatePost {
+    textarea, input {
+        width: 100%;
+    }  
+
+    .CreatePost__container {
+        margin-top: 40px;
+        background: $white;
+        border: 1px solid $gray-border;
+        padding: 40px 45px;
+        border-top: 2px solid $green-primary;
+    }
+
+    .CreatePost__field {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-row-gap: 15px;
+        
+        label {
+            text-align: right;
+            margin-right: 20px;
+        }
+        
+    }
+}
+
+.Signin {
+    border: 1px solid $gray-border;
+    border-top: 3px solid $green-primary;
+    padding: 50px;
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    margin: auto auto;
+
+    label {
+        margin-top: 20px;
+    }
+
+    input {
+        width: 300px;
+    }
+}
+
+.Signin__submit {
+    width: fit-content;
+    margin-top: 30px;
+    background-color: $green-primary;
+    border: 1px solid $green-primary;
+    padding: 5px 7px;
+    color: $white;
+    border-radius: 3px;
+}

@@ -26,9 +26,9 @@ Settings
                 Cakes by Rebecca
                 <span className="icon ion-ios-arrow-down" />
               </div>
-              <a className="Header__createPost" href="/">
+              <Link className="Header__createPost" to="/create-post">
 Create Post
-              </a>
+              </Link>
               <div
                 className="Header__profilePicture"
                 style={{ backgroundImage: 'url("/img/profile.jpg")' }}
