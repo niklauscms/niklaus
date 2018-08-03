@@ -16,7 +16,16 @@ export default class extends React.Component {
   }
 
   onSubmit() {
-    // TODO: fill in
+    const aaa = fetch('http://localhost:8000/session', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: 'niklaus',
+        password: 123456,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {console.log(res.json()); return false}).catch(error => console.error('Error': error)).then(response => console.log('Success: ', response));
   }
 
   onChange({ target: { name, value } }) {
