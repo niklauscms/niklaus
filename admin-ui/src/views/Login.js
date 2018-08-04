@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import api from '~/api';
 import Button from '~/components/Button';
 import Card from '~/components/Card';
 import Form from '~/components/Form';
 import Input from '~/components/Input';
+import { SET_SESSION } from '~/reducers';
 
-export default class extends React.Component {
+export class Login extends React.Component {
   constructor() {
     super();
 
@@ -15,23 +18,25 @@ export default class extends React.Component {
     this.state = { username: '', password: '' };
   }
 
-  onSubmit() {
-    const aaa = fetch('http://localhost:8000/session', {
-      method: 'POST',
-      body: JSON.stringify({
-        username: 'niklaus',
-        password: 123456,
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {console.log(res.json()); return false}).catch(error => console.error('Error': error)).then(response => console.log('Success: ', response));
+  async onSubmit() {
+    const { username, password } = this.state;
+    try {
+      const r = await api.post('/session', {
+        username,
+        password,
+      });
+
+      this.props.dispatch({ type: SET_SESSION });
+    } catch (e) {
+      console.log('error on submit: ', e);
+      // Bad request! Bad username must be
+    }
   }
 
   onChange({ target: { name, value } }) {
     this.setState({ [name]: value });
   }
-
+  
   render() {
     const { username, password } = this.state;
 
@@ -57,3 +62,5 @@ export default class extends React.Component {
     );
   }
 }
+
+export default connect()(Login);

@@ -2,10 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import Table, { IconColumn } from 'react-css-grid-table';
 
-async function request(endpoint) {
-  const response = await fetch(`http://localhost:8000/${endpoint}`);
-  return response.json();
-}
+import api from '~/api';
 
 export default class extends React.Component {
   constructor() {
@@ -15,7 +12,7 @@ export default class extends React.Component {
   }
 
   async componentDidMount() {
-    const posts = await request('posts');
+    const posts = await api.get('/posts');
     this.setState({ posts });
   }
 

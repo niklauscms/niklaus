@@ -2,7 +2,7 @@ const { makeExporter } = require('./utility');
 
 module.exports.register = function (db, datatypes) {
   // eslint-disable-next-line no-param-reassign
-  db.User = db.define('nc_user', {
+  db.User = db.define('nc_users', {
     id: {
       type: datatypes.INTEGER,
       autoIncrement: true,
