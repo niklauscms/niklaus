@@ -36,7 +36,7 @@ export class Login extends React.Component {
   onChange({ target: { name, value } }) {
     this.setState({ [name]: value });
   }
-  
+
   render() {
     const { username, password } = this.state;
 
@@ -56,7 +56,9 @@ export class Login extends React.Component {
             name="password"
             onChange={this.onChange}
           />
-          <Button primary>Sign in</Button>
+          <Button primary>
+Sign in
+          </Button>
         </Form>
       </Card>
     );

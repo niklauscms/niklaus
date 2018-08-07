@@ -1,4 +1,4 @@
-const SESSION_DEFAULT = { loggedIn: false }; 
+const SESSION_DEFAULT = { loggedIn: false };
 
 export const DROP_SESSION = Symbol('DROP_SESSION');
 export const SET_SESSION = Symbol('SET_SESSION');

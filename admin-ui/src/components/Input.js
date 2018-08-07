@@ -6,12 +6,12 @@ export default function (props) {
   return (
     <div className="Input">
       {props.label && (
-         <label
-           className="Input__label"
-           htmlFor={props.name}
-         >
-           {props.label}
-         </label>
+      <label
+        className="Input__label"
+        htmlFor={props.name}
+      >
+        {props.label}
+      </label>
       )}
       <input
         className="Input__input"

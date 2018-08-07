@@ -1,6 +1,6 @@
 import { API_URL } from '~/constants';
 
-async function request (endpoint, method, body) {
+async function request(endpoint, method, body) {
   const options = { method };
 
   if (['POST', 'PUT'].includes(method)) {
@@ -19,20 +19,22 @@ async function request (endpoint, method, body) {
   return await response.json();
 }
 
-function rget (endpoint) {
+function rget(endpoint) {
   return request(endpoint, 'GET');
 }
 
-function rpost (endpoint, body) {
+function rpost(endpoint, body) {
   return request(endpoint, 'POST', body);
 }
 
-function rput (endpoint, body) {
+function rput(endpoint, body) {
   return request(endpoint, 'PUT', body);
 }
 
-function rdelete (endpoint) {
+function rdelete(endpoint) {
   return request(endpoint, 'DELETE');
 }
 
-export default { get: rget, post: rpost, put: rput, delete: rdelete };
+export default {
+  get: rget, post: rpost, put: rput, delete: rdelete,
+};

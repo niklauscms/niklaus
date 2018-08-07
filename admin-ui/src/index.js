@@ -33,11 +33,11 @@ function App(props) {
 
   if (!session.loggedIn) {
     return (
-        <div className="row">
-          <div className="col Main">
-            <Login />
-          </div>
+      <div className="row">
+        <div className="col Main">
+          <Login />
         </div>
+      </div>
     );
   }
 

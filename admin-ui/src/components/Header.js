@@ -6,7 +6,6 @@ import './Header.scss';
 export default function () {
   return (
     <header className="Header">
-      <div className="container">
         <div className="row align-center">
           <Link className="Header__link col col-auto" activeStyle={{ color: 'red' }} to="/">
 Dashboard
@@ -35,7 +34,6 @@ Create Post
               />
             </div>
           </div>
-        </div>
       </div>
     </header>
   );
