@@ -1,5 +1,3 @@
-const { makeExporter } = require('./utility');
-
 module.exports.register = function (db, datatypes) {
   // eslint-disable-next-line no-param-reassign
   db.User = db.define('nc_user', {
@@ -32,9 +30,8 @@ module.exports.register = function (db, datatypes) {
     },
   });
 
-  // eslint-disable-next-line no-param-reassign
   db.User.export = u => ({
-    ...makeExporter()(u),
+    ...u,
     password: undefined,
   });
 };

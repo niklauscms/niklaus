@@ -1,5 +1,3 @@
-const { makeExporter } = require('./utility');
-
 module.exports.register = function (db, datatypes) {
   // eslint-disable-next-line no-param-reassign
   db.Session = db.define('nc_session', {
@@ -28,5 +26,5 @@ module.exports.register = function (db, datatypes) {
   });
 
   // eslint-disable-next-line no-param-reassign
-  db.Session.export = makeExporter();
+  db.Session.export = a => a;
 };

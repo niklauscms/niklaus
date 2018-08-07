@@ -1,5 +1,3 @@
-const { makeExporter } = require('./utility');
-
 module.exports.register = function (db, datatypes) {
   // eslint-disable-next-line no-param-reassign
   db.Post = db.define('nc_post', {
@@ -10,10 +8,10 @@ module.exports.register = function (db, datatypes) {
       allowNull: false,
     },
     title: {
-      type: datatypes.BLOB,
+      type: datatypes.TEXT,
     },
     content: {
-      type: datatypes.BLOB,
+      type: datatypes.TEXT,
     },
     createdAt: {
       type: datatypes.DATE,
@@ -52,5 +50,5 @@ module.exports.register = function (db, datatypes) {
   });
 
   // eslint-disable-next-line no-param-reassign
-  db.Post.export = makeExporter('title', 'content');
+  db.Post.export = a => a;
 };

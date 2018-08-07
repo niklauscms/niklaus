@@ -63,10 +63,10 @@ module.exports = {
         allowNull: false,
       },
       title: {
-        type: datatypes.BLOB,
+        type: datatypes.TEXT,
       },
       content: {
-        type: datatypes.BLOB,
+        type: datatypes.TEXT,
       },
       createdAt: {
         type: datatypes.DATE,
@@ -103,9 +103,51 @@ module.exports = {
         },
       },
     });
+
+    await queryInterface.createTable('nc_tags', {
+      id: {
+        type: datatypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false,
+      },
+      name: {
+        type: datatypes.TEXT,
+      },
+      createdAt: {
+        type: datatypes.DATE,
+        defaultValue: datatypes.NOW,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: datatypes.DATE,
+        defaultValue: datatypes.NOW,
+        allowNull: false,
+      },
+    });
+
+    await queryInterface.createTable('nc_tags_posts', {
+      postId: {
+        type: datatypes.INTEGER,
+        references: {
+          model: 'nc_posts',
+          key: 'id',
+        },
+      },
+      tagId: {
+        type: datatypes.INTEGER,
+        references: {
+          model: 'nc_tags',
+          key: 'id',
+        },
+      },
+    });
   },
   down: async (queryInterface) => {
+    await queryInterface.dropTable('nc_tags_posts');
+    await queryInterface.dropTable('nc_tags');
     await queryInterface.dropTable('nc_posts');
+    await queryInterface.dropTable('nc_sessions');
     await queryInterface.dropTable('nc_users');
   },
 };
