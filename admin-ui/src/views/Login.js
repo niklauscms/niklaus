@@ -26,9 +26,8 @@ export class Login extends React.Component {
         username,
         password,
       });
-
       dispatch({ type: SET_SESSION });
-    } catch (e) {
+    } catch (e) {[]
       // Bad request! Bad username must be
     }
   }

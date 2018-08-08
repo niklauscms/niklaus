@@ -1,4 +1,4 @@
-import { API_URL } from 'constants';
+import API_URL from 'constants';
 
 async function request(endpoint, method, body) {
   const options = { method };
