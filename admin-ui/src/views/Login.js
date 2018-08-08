@@ -20,15 +20,15 @@ export class Login extends React.Component {
 
   async onSubmit() {
     const { username, password } = this.state;
+    const { dispatch } = this.props;
     try {
-      const r = await api.post('/session', {
+      await api.post('/session', {
         username,
         password,
       });
 
-      this.props.dispatch({ type: SET_SESSION });
+      dispatch({ type: SET_SESSION });
     } catch (e) {
-      console.log('error on submit: ', e);
       // Bad request! Bad username must be
     }
   }
@@ -57,7 +57,7 @@ export class Login extends React.Component {
             onChange={this.onChange}
           />
           <Button primary>
-Sign in
+            Sign in
           </Button>
         </Form>
       </Card>

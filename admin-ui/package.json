@@ -1,6 +1,7 @@
 {
   "name": "admin",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "dependencies": {
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -31,7 +32,14 @@
   "eslintConfig": {
     "extends": "airbnb",
     "rules": {
-      "react/jsx-filename-extension": "off"
+      "import/no-unresolved": "off",
+      "import/no-named-as-default": "off",
+      "react/jsx-filename-extension": "off",
+      "jsx-a11y/label-has-for": [2, {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }]
     },
     "env": {
       "browser": true

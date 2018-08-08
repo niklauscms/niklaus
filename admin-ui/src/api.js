@@ -1,4 +1,4 @@
-import { API_URL } from '~/constants';
+import { API_URL } from 'constants';
 
 async function request(endpoint, method, body) {
   const options = { method };
@@ -16,7 +16,7 @@ async function request(endpoint, method, body) {
     throw new Error(response);
   }
 
-  return await response.json();
+  return response.json();
 }
 
 function rget(endpoint) {

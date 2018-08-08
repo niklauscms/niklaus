@@ -1,16 +1,27 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import './Card.scss';
 
-export default function (props) {
+export default function Card(props) {
+  const { title, children } = props;
   return (
     <div className="Card">
-      {props.title && (
+      {title && (
       <h4>
-        {props.title}
+        {title}
       </h4>
       )}
-      {props.children}
+      {children}
     </div>
   );
 }
+
+Card.defaultProps = {
+  title: '',
+};
+
+Card.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
