@@ -26,14 +26,11 @@ module.exports.register = function (app) {
     function unauthorized() {
       res.status(401).json({ error: 'Invalid username or password' });
     }
-    
-    console.log(req.body);
-    
+
     const { password, username } = req.body;
 
     if (!password || !username) {
       unauthorized();
-      console.log('here1');
       return;
     }
 
@@ -41,7 +38,6 @@ module.exports.register = function (app) {
 
     if (!users.length) {
       unauthorized();
-      console.log('here2');
       return;
     }
 
@@ -49,7 +45,6 @@ module.exports.register = function (app) {
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
       unauthorized();
-      console.log('here3');
       return;
     }
 
@@ -58,12 +53,9 @@ module.exports.register = function (app) {
       userId: user.id,
       expiresIn: SESSION_AGE,
     });
-    console.log('here4');
 
     const options = { maxAge: SESSION_AGE, httpOnly: true };
-   
-    console.log('here5');
+
     res.cookie('sessionId', id, options).json({});
-    console.log('login successful');
   });
 };
