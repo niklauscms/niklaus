@@ -1,4 +1,5 @@
 {
+  "license": "UNLICENSED",
   "scripts": {
     "start": "node src",
     "lint": "eslint .",
