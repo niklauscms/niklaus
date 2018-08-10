@@ -27,7 +27,8 @@
   "scripts": {
     "start": "parcel -p 3000 ./index.html",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": "airbnb",
@@ -35,11 +36,17 @@
       "import/no-unresolved": "off",
       "import/no-named-as-default": "off",
       "react/jsx-filename-extension": "off",
-      "jsx-a11y/label-has-for": [2, {
-        "required": {
-          "some": ["nesting", "id"]
+      "jsx-a11y/label-has-for": [
+        2,
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
         }
-      }]
+      ]
     },
     "env": {
       "browser": true
@@ -67,11 +74,15 @@
     ]
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
     "eslint": "^5.2.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "node-sass": "^4.9.2"
+    "jest": "^23.4.2",
+    "node-sass": "^4.9.2",
+    "regenerator-runtime": "^0.12.1"
   }
 }
