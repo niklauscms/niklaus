@@ -16,7 +16,7 @@ export default function () {
       value: 'user',
       width: '2fr',
       format: user => (
-        <Link to="/users:id">
+        <Link to="/user/:id">
           {user}
         </Link>
       ),

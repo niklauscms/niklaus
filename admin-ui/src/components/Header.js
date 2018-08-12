@@ -30,6 +30,7 @@ Create Post
             </Link>
             <div
               className="Header__profilePicture"
+              style={{ backgroundImage: 'url("/img/profile.jpg")' }}
             />
           </div>
         </div>

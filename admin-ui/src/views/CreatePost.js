@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const CreatePost = () => (
   <div className="CreatePost">
     <h1>
@@ -9,12 +7,18 @@ const CreatePost = () => (
     </h1>
     <div className="CreatePost__container">
       <div className="CreatePost__field">
-        <Form>
-          <Input label="Title" type="text">
-          <Input label="content" type="textarea">
-          <Input label="tags">
-          <Button>Create Post</button>
-        </Form>
+        <label htmlFor="title">
+              Title
+        </label>
+        <input />
+        <label htmlFor="content">
+              Content
+        </label>
+        <textarea rows="20" />
+        <label htmlFor="tags">
+              Tags
+        </label>
+        <input />
       </div>
     </div>
   </div>
