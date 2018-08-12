@@ -8,25 +8,25 @@ export default function () {
     <header className="Header">
       <div className="row align-center">
         <Link className="Header__link col col-auto" activeStyle={{ color: 'red' }} to="/">
-Dashboard
+          Dashboard
         </Link>
         <Link className="Header__link col col-auto" to="/posts">
-Posts
+          Posts
         </Link>
         <Link className="Header__link col col-auto" to="/users">
-Users
+          Users
         </Link>
         <Link className="Header__link col col-auto" to="/settings">
-Settings
+          Settings
         </Link>
         <div className="col">
           <div className="Header__user row">
             <div className="Header__blogName">
-                Cakes by Rebecca
+              Cakes by Rebecca
               <span className="icon ion-ios-arrow-down" />
             </div>
             <Link className="Header__createPost" to="/create-post">
-Create Post
+              Create Post
             </Link>
             <div
               className="Header__profilePicture"

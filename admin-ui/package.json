@@ -9,6 +9,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.0.0-alpha.6",
+    "connected-react-router": "^4.4.0",
     "history": "^4.7.2",
     "ionicons": "^3.0.0",
     "moment": "^2.22.2",
@@ -21,8 +22,9 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.3.1",
-    "react-router-redux": "^5.0.0-alpha.9",
-    "redux": "^4.0.0"
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.0",
+    "regenerator-runtime": "^0.12.1"
   },
   "scripts": {
     "start": "parcel -p 3000 ./index.html",
@@ -35,11 +37,17 @@
       "import/no-unresolved": "off",
       "import/no-named-as-default": "off",
       "react/jsx-filename-extension": "off",
-      "jsx-a11y/label-has-for": [2, {
-        "required": {
-          "some": ["nesting", "id"]
+      "jsx-a11y/label-has-for": [
+        2,
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
         }
-      }]
+      ]
     },
     "env": {
       "browser": true
