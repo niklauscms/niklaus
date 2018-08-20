@@ -22,7 +22,10 @@ function initializeApp(config) {
 
   // React dev server is used in development, production build is on one server.
   if (!config.isProduction) {
-    app.use(cors());
+    app.use(cors({
+      origin: 'http://localhost:3000',
+      credentials: true,
+    }));
   } else {
     frontend.register(app);
   }

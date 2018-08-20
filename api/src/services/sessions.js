@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const uuidv4 = require('uuid/v4');
 
-const SESSION_AGE = 1000 * 60 * 120; // 2 Hours
+const SESSION_AGE = 1000 * 60 * 60 * 2; // 2 Hours
 
 module.exports.register = function (app) {
   app.delete('/session', async (req, res) => {
