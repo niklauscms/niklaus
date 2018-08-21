@@ -8,7 +8,7 @@ function sessionReducer(state = SESSION_DEFAULT, action) {
     case SET_SESSION:
       return { loggedIn: true };
     case DROP_SESSION:
-      return SESSION_DEFAULT;
+      return { loggedIn: false };
     default:
       return state;
   }

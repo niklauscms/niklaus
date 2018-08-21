@@ -1,7 +1,7 @@
 import API_URL from 'constants';
 
 async function request(endpoint, method, body) {
-  const options = { method };
+  const options = { method, credentials: 'include' };
 
   if (['POST', 'PUT'].includes(method)) {
     options.body = JSON.stringify(body);
